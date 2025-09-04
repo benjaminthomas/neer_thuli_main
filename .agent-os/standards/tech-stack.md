@@ -2,7 +2,7 @@
 
 ## Context
 
-Global tech stack defaults for Agent OS projects, overridable in project-specific `.agent-os/product/tech-stack.md`.
+Global tech stack defaults for Agent OS projects, overridable in project-specific `.agent-os/product/tech-stack.md`. Includes MCP server and design system integration standards.
 
 - App Framework: Ruby on Rails 8.0+
 - Language: Ruby 3.2+
@@ -31,3 +31,21 @@ Global tech stack defaults for Agent OS projects, overridable in project-specifi
 - Tests: Run before deployment
 - Production Environment: main branch
 - Staging Environment: staging branch
+
+## MCP Server Integration
+
+- MCP Servers: Enable for enhanced tooling capabilities
+- Database Operations: mcp-server-postgres for advanced queries
+- File Operations: mcp-server-filesystem for bulk operations
+- Git Operations: mcp-server-git for repository management
+- Web Services: mcp-server-fetch for API integrations
+- Development Tools: mcp-server-sqlite for local development
+
+## Design System Standards
+
+- Design Tokens: CSS custom properties + framework config
+- Component Library: Framework-specific (React: Shadcn/ui, Rails: ViewComponent)
+- Accessibility: WCAG 2.1 AA compliance minimum
+- Responsive Design: Mobile-first approach
+- Performance: Components under 5KB gzipped
+- Testing: Visual regression + accessibility testing

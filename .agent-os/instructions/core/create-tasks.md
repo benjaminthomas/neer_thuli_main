@@ -48,21 +48,34 @@ Use the file-creator subagent to create file: tasks.md inside of the current fea
   ## Tasks
 
   - [ ] 1. [MAJOR_TASK_DESCRIPTION]
-    - [ ] 1.1 Write tests for [COMPONENT]
-    - [ ] 1.2 [IMPLEMENTATION_STEP]
-    - [ ] 1.3 [IMPLEMENTATION_STEP]
-    - [ ] 1.4 Verify all tests pass
+    - [ ] 1.1 Research with Context7 MCP for latest [FRAMEWORK] documentation
+    - [ ] 1.2 Write tests for [COMPONENT]
+    - [ ] 1.3 Setup Supabase MCP for database operations (if applicable)
+    - [ ] 1.4 Use Shadcn MCP for UI component selection
+    - [ ] 1.5 [IMPLEMENTATION_STEP]
+    - [ ] 1.6 [IMPLEMENTATION_STEP]
+    - [ ] 1.7 Validate with Playwright MCP for UI testing
+    - [ ] 1.8 Verify all tests pass
 
   - [ ] 2. [MAJOR_TASK_DESCRIPTION]
-    - [ ] 2.1 Write tests for [COMPONENT]
-    - [ ] 2.2 [IMPLEMENTATION_STEP]
+    - [ ] 2.1 Use Context7 MCP for [TECH_STACK] best practices
+    - [ ] 2.2 Write tests for [COMPONENT]
+    - [ ] 2.3 Configure specialized MCP integration
+    - [ ] 2.4 [IMPLEMENTATION_STEP]
+    - [ ] 2.5 Validate with Playwright MCP
 </task_template>
 
 <ordering_principles>
+  - Start with Context7 MCP for latest documentation and best practices
   - Consider technical dependencies
-  - Follow TDD approach
+  - Follow TDD approach with Playwright MCP for UI validation
   - Group related functionality
   - Build incrementally
+  - Integrate Supabase MCP early for database operations
+  - Use Shadcn MCP for component selection before custom implementation
+  - Setup design system components before custom styling
+  - Prioritize accessibility compliance with Playwright accessibility audits
+  - End with comprehensive testing using specialized MCPs
 </ordering_principles>
 
 </step>

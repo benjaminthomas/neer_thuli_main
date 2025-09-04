@@ -83,7 +83,13 @@ Use the context-fetcher subagent to clarify scope boundaries and technical consi
     - functionality specifics
     - UI/UX requirements
     - integration points
+    - MCP server requirements (Context7, Supabase, Playwright, Shadcn)
   </technical>
+  <mcp_considerations>
+    - documentation needs for latest frameworks
+    - database operations and real-time requirements
+    - UI component and testing requirements
+  </mcp_considerations>
 </clarification_areas>
 
 <decision_tree>
@@ -261,7 +267,7 @@ Use the file-creator subagent to create the file: .agent-os/specs/YYYY-MM-DD-spe
 
 ### Step 8: Create Technical Specification
 
-Use the file-creator subagent to create the file: sub-specs/technical-spec.md using this template:
+Use the file-creator subagent to create the file: sub-specs/technical-spec.md using this template with MCP and design system integration:
 
 <file_template>
   <header>
@@ -277,7 +283,21 @@ Use the file-creator subagent to create the file: sub-specs/technical-spec.md us
     - UI/UX specifications
     - integration requirements
     - performance criteria
+    - MCP server integration points
+    - design system component usage
   </technical_requirements>
+  <mcp_integration>
+    - identify applicable MCP servers
+    - specify MCP server usage patterns
+    - performance optimizations via MCP
+  </mcp_integration>
+  <design_system_integration>
+    - required design system components
+    - custom component needs
+    - design token usage
+    - responsive design requirements
+    - accessibility compliance
+  </design_system_integration>
   <external_dependencies_conditional>
     - only include if new dependencies needed
     - new libraries/packages
@@ -291,6 +311,23 @@ Use the file-creator subagent to create the file: sub-specs/technical-spec.md us
 
   - [SPECIFIC_TECHNICAL_REQUIREMENT]
   - [SPECIFIC_TECHNICAL_REQUIREMENT]
+
+  ## MCP Server Integration
+
+  - **Context7 Documentation:** [FRAMEWORK_DOCS_NEEDED] (Next.js 15, Tailwind 4, React 19)
+  - **Supabase MCP:** [DATABASE_OPERATIONS_REQUIRED] (queries, auth, real-time)
+  - **Playwright MCP:** [UI_TESTING_REQUIREMENTS] (visual testing, accessibility)
+  - **Shadcn MCP:** [COMPONENT_REQUIREMENTS] (UI components, theming)
+  - **Usage Patterns:** [HOW_SPECIALIZED_MCPS_WILL_BE_USED]
+  - **Performance Benefits:** [EXPECTED_OPTIMIZATIONS_FROM_MCPS]
+
+  ## Design System Integration
+
+  - **Required Components:** [LIST_OF_DESIGN_SYSTEM_COMPONENTS]
+  - **Custom Components:** [ANY_CUSTOM_COMPONENTS_NEEDED]
+  - **Design Tokens:** [COLORS_TYPOGRAPHY_SPACING_USED]
+  - **Responsive Behavior:** [MOBILE_TABLET_DESKTOP_CONSIDERATIONS]
+  - **Accessibility:** [WCAG_COMPLIANCE_REQUIREMENTS]
 
   ## External Dependencies (Conditional)
 

@@ -68,60 +68,72 @@ Search and extract relevant sections from technical-spec.md to understand the te
 
 </step>
 
-<step number="3" subagent="context-fetcher" name="best_practices_review">
+<step number="3" subagent="context-fetcher" name="standards_review">
 
-### Step 3: Best Practices Review
+### Step 3: Standards Review
 
-Use the context-fetcher subagent to retrieve relevant sections from @.agent-os/standards/best-practices.md that apply to the current task's technology stack and feature type.
+Use the context-fetcher subagent to retrieve relevant sections from Agent OS standards that apply to the current task's technology stack and feature type.
 
 <selective_reading>
-  <search_best_practices>
+  <search_standards>
     FIND sections relevant to:
-    - Task's technology stack
+    - Task's technology stack from @.agent-os/standards/best-practices.md
     - Feature type being implemented
     - Testing approaches needed
     - Code organization patterns
-  </search_best_practices>
+    - MCP server usage from @.agent-os/standards/mcp-servers.md
+    - Design system components from @.agent-os/standards/design-systems.md
+  </search_standards>
 </selective_reading>
 
 <instructions>
   ACTION: Use context-fetcher subagent
-  REQUEST: "Find best practices sections relevant to:
+  REQUEST: "Find relevant standards sections for:
             - Task's technology stack: [CURRENT_TECH]
             - Feature type: [CURRENT_FEATURE_TYPE]
             - Testing approaches needed
-            - Code organization patterns"
-  PROCESS: Returned best practices
-  APPLY: Relevant patterns to implementation
+            - Code organization patterns
+            - Applicable specialized MCP servers (Context7, Supabase, Playwright, Shadcn)
+            - Required design system components"
+  PROCESS: Returned standards information
+  PRIORITIZE: Context7 for documentation, specialized MCPs for domain tasks
+  APPLY: Relevant patterns, MCP servers, and design components
 </instructions>
 
 </step>
 
-<step number="4" subagent="context-fetcher" name="code_style_review">
+<step number="4" subagent="context-fetcher" name="implementation_preparation">
 
-### Step 4: Code Style Review
+### Step 4: Implementation Preparation
 
-Use the context-fetcher subagent to retrieve relevant code style rules from @.agent-os/standards/code-style.md for the languages and file types being used in this task.
+Use the context-fetcher subagent to gather implementation details including code style, MCP server configurations, and design system setup for the current task.
 
 <selective_reading>
-  <search_code_style>
-    FIND style rules for:
+  <search_implementation_details>
+    FIND implementation details for:
+    - Code style rules from @.agent-os/standards/code-style.md
+    - MCP server configurations from @.agent-os/standards/mcp-servers.md
+    - Design system components from @.agent-os/standards/design-systems.md
     - Languages used in this task
     - File types being modified
     - Component patterns being implemented
-    - Testing style guidelines
-  </search_code_style>
+  </search_implementation_details>
 </selective_reading>
 
 <instructions>
   ACTION: Use context-fetcher subagent
-  REQUEST: "Find code style rules for:
-            - Languages: [LANGUAGES_IN_TASK]
+  REQUEST: "Find implementation details for:
+            - Code style rules for languages: [LANGUAGES_IN_TASK]
             - File types: [FILE_TYPES_BEING_MODIFIED]
-            - Component patterns: [PATTERNS_BEING_IMPLEMENTED]
-            - Testing style guidelines"
-  PROCESS: Returned style rules
-  APPLY: Relevant formatting and patterns
+            - Specialized MCP server setup for: [TASK_TYPE]
+            - Context7 documentation needs for: [TECH_STACK]
+            - Supabase MCP for database operations: [DATA_REQUIREMENTS]
+            - Shadcn MCP for UI components: [UI_REQUIREMENTS]
+            - Playwright MCP for testing: [TEST_REQUIREMENTS]
+            - Component patterns: [PATTERNS_BEING_IMPLEMENTED]"
+  PROCESS: Returned implementation guidance
+  PRIORITIZE: Specialized MCPs over standard tools
+  APPLY: Style rules, MCP integration, and design components
 </instructions>
 
 </step>
@@ -143,16 +155,24 @@ Execute the parent task and all sub-tasks in order using test-driven development
     IF sub-task 1 is "Write tests for [feature]":
       - Write all tests for the parent feature
       - Include unit tests, integration tests, edge cases
+      - Include design system component tests if applicable
       - Run tests to ensure they fail appropriately
       - Mark sub-task 1 complete
   </subtask_1_tests>
 
   <middle_subtasks_implementation>
     FOR each implementation sub-task (2 through n-1):
+      - Use Context7 MCP for latest documentation and examples
+      - Use Supabase MCP for database operations and validation
+      - Use Shadcn MCP for component selection and integration
+      - Use Playwright MCP for UI testing and visual validation
+      - Prefer specialized MCPs over standard tools
+      - Use design system components instead of custom styling
       - Implement the specific functionality
       - Make relevant tests pass
       - Update any adjacent/related tests if needed
       - Refactor while keeping tests green
+      - Validate design system compliance
       - Mark sub-task complete
   </middle_subtasks_implementation>
 
@@ -161,6 +181,10 @@ Execute the parent task and all sub-tasks in order using test-driven development
       - Run entire test suite
       - Fix any remaining failures
       - Ensure no regressions
+      - Use Playwright MCP for visual regression testing
+      - Use Supabase MCP for data validation
+      - Validate specialized MCP server integrations
+      - Verify design system compliance
       - Mark final sub-task complete
   </final_subtask_verification>
 </execution_order>
