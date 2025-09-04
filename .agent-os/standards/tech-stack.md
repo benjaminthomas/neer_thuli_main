@@ -13,9 +13,9 @@ Global tech stack defaults for Agent OS projects, overridable in project-specifi
 - Import Strategy: Node.js modules
 - Package Manager: npm
 - Node Version: 22 LTS
-- CSS Framework: TailwindCSS 4.0+
-- UI Components: Instrumental Components latest
-- UI Installation: Via development gems group
+- CSS Framework: TailwindCSS 4.0+ (CSS-first configuration)
+- UI Components: Shadcn/ui latest (OKLCH color format)
+- UI Installation: Via npm/pnpm for React projects
 - Font Provider: Google Fonts
 - Font Loading: Self-hosted for performance
 - Icons: Lucide React components
@@ -43,8 +43,10 @@ Global tech stack defaults for Agent OS projects, overridable in project-specifi
 
 ## Design System Standards
 
-- Design Tokens: CSS custom properties + framework config
+- Design Tokens: OKLCH color space + CSS-first configuration
 - Component Library: Framework-specific (React: Shadcn/ui, Rails: ViewComponent)
+- Color Format: OKLCH for perceptual uniformity and accessibility
+- Configuration: Tailwind CSS 4.0 with @theme inline directive
 - Accessibility: WCAG 2.1 AA compliance minimum
 - Responsive Design: Mobile-first approach
 - Performance: Components under 5KB gzipped

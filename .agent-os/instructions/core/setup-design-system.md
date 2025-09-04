@@ -75,43 +75,77 @@ Use the file-creator subagent to create design system configuration and guidelin
 </config_structure>
 
 <design_tokens_template>
-{
-  "colors": {
-    "primary": {
-      "50": "#f0f9ff",
-      "500": "#3b82f6", 
-      "900": "#1e3a8a"
-    },
-    "semantic": {
-      "success": "#10b981",
-      "warning": "#f59e0b",
-      "error": "#ef4444"
-    }
-  },
-  "typography": {
-    "fontFamily": {
-      "sans": ["Inter", "system-ui", "sans-serif"],
-      "mono": ["JetBrains Mono", "monospace"]
-    },
-    "fontSize": {
-      "xs": "0.75rem",
-      "sm": "0.875rem",
-      "base": "1rem",
-      "lg": "1.125rem",
-      "xl": "1.25rem"
-    }
-  },
-  "spacing": {
-    "1": "0.25rem",
-    "2": "0.5rem", 
-    "4": "1rem",
-    "8": "2rem"
-  },
-  "borderRadius": {
-    "sm": "0.125rem",
-    "md": "0.375rem",
-    "lg": "0.5rem"
-  }
+/* globals.css - Tailwind CSS 4.0 + Shadcn/ui OKLCH */
+@import 'tailwindcss';
+
+:root {
+  /* Shadcn/ui OKLCH Design Tokens */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --radius: 0.625rem;
+  
+  /* Chart Colors */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.145 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.488 0.243 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  
+  /* Dark mode chart colors */
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 }
 </design_tokens_template>
 
@@ -283,10 +317,12 @@ Configure the chosen framework's design system integration based on the project'
 
 <framework_integrations>
   <react_typescript>
-    - Setup Shadcn/ui with Tailwind CSS
-    - Configure design tokens in tailwind.config.js
-    - Setup component prop interfaces
+    - Setup Shadcn/ui with Tailwind CSS 4.0
+    - Configure OKLCH design tokens in globals.css
+    - Use CSS-first configuration with @theme inline
+    - Setup component prop interfaces with TypeScript
     - Configure Storybook for documentation
+    - Remove tailwind.config.js (use CSS-first approach)
   </react_typescript>
   <react_native>
     - Setup NativeBase or React Native Elements

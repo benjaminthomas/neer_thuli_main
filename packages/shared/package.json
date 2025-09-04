@@ -1,0 +1,25 @@
+{
+  "name": "@neer-thuli/shared",
+  "version": "1.0.0",
+  "description": "Shared utilities, types, and configurations for Neer Thuli monorepo",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src --ext .ts,.tsx",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}

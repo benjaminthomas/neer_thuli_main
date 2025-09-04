@@ -1,0 +1,57 @@
+{
+  "name": "neer-thuli-monorepo",
+  "version": "1.0.0",
+  "description": "Water infrastructure monitoring platform - monorepo with web dashboard and mobile app",
+  "private": true,
+  "packageManager": "pnpm@8.0.0",
+  "scripts": {
+    "dev": "pnpm --parallel --recursive run dev",
+    "dev:web": "pnpm --filter @neer-thuli/web run dev",
+    "dev:mobile": "pnpm --filter @neer-thuli/mobile run dev",
+    "build": "pnpm --recursive run build",
+    "build:web": "pnpm --filter @neer-thuli/web run build",
+    "build:mobile": "pnpm --filter @neer-thuli/mobile run build",
+    "lint": "pnpm --recursive run lint",
+    "type-check": "pnpm --recursive run type-check",
+    "test": "playwright test",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:database": "playwright test tests/database/",
+    "test:auth": "playwright test tests/database/auth-system.spec.ts",
+    "test:rls": "playwright test tests/database/rls-policies.spec.ts",
+    "test:invitations": "playwright test tests/database/invitation-system.spec.ts",
+    "test:sessions": "playwright test tests/database/session-management.spec.ts",
+    "test:audit": "playwright test tests/database/audit-logging.spec.ts",
+    "test:isolation": "playwright test tests/database/multi-tenant-isolation.spec.ts",
+    "test:edge-functions": "playwright test tests/database/edge-functions.spec.ts",
+    "test:web": "playwright test tests/web/ --project=web-e2e",
+    "test:auth-web": "playwright test tests/web/auth-system.spec.ts --project=web-e2e",
+    "test:unit": "vitest",
+    "test:unit:run": "vitest run",
+    "test:unit:coverage": "vitest run --coverage",
+    "test:auth-unit": "vitest run tests/unit/auth-client.spec.ts",
+    "test:report": "playwright show-report",
+    "clean": "pnpm --recursive run clean",
+    "postinstall": "pnpm --recursive run postinstall || true"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^6.1.0",
+    "@vitejs/plugin-react": "^4.1.0",
+    "dotenv": "^17.2.2",
+    "jsdom": "^23.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0",
+    "@vitest/coverage-v8": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8.0.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

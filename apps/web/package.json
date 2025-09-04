@@ -1,0 +1,37 @@
+{
+  "name": "@neer-thuli/web",
+  "version": "1.0.0",
+  "description": "Water infrastructure monitoring web dashboard",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@supabase/supabase-js": "^2.38.0",
+    "@supabase/auth-helpers-nextjs": "^0.8.7",
+    "@supabase/auth-helpers-react": "^0.4.2",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.0.0",
+    "@neer-thuli/shared": "workspace:*",
+    "@neer-thuli/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.0.0",
+    "tailwindcss": "^4.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^15.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

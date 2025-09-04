@@ -3,9 +3,11 @@
     "context7": {
       "command": "context7-mcp",
       "args": [
-        "--frameworks", "nextjs,tailwind,react,typescript,supabase,expo",
+        "--frameworks", "nextjs15,tailwind4,react19,typescript,supabase,expo,pnpm",
         "--version", "latest",
-        "--include-examples", "true"
+        "--include-examples", "true",
+        "--monorepo", "true",
+        "--workspace-structure", "apps,packages"
       ],
       "env": {
         "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
@@ -44,7 +46,9 @@
         "--framework", "nextjs",
         "--style", "default",
         "--typescript", "true",
-        "--tailwind-version", "4"
+        "--tailwind-version", "4",
+        "--monorepo", "true",
+        "--components-path", "packages/ui/src/components"
       ],
       "enabled": true,
       "priority": 3

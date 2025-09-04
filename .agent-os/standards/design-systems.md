@@ -27,10 +27,11 @@ Design System
 ## Technology Stack Integration
 
 ### React + TypeScript Projects
-- **Primary**: Shadcn/ui + Tailwind CSS
-- **Tokens**: CSS custom properties + Tailwind config
+- **Primary**: Shadcn/ui + Tailwind CSS 4.0
+- **Tokens**: OKLCH color space + CSS-first configuration
 - **Components**: TypeScript interfaces for props
 - **Documentation**: Storybook integration
+- **Color Format**: OKLCH for perceptual uniformity
 
 ### React Native Projects
 - **Primary**: NativeBase or React Native Elements
@@ -68,34 +69,48 @@ card:
 
 ### Design Token Implementation
 
-#### Tailwind CSS Configuration
-```javascript
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        primary: {
-          50: '#f0f9ff',
-          500: '#3b82f6',
-          900: '#1e3a8a'
-        }
-      },
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif']
-      }
-    }
-  }
+#### Tailwind CSS 4.0 Configuration (CSS-First)
+```css
+@import 'tailwindcss';
+
+:root {
+  /* Shadcn/ui OKLCH Variables */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 }
 ```
 
-#### CSS Custom Properties
-```css
-:root {
-  --color-primary-500: #3b82f6;
-  --spacing-4: 1rem;
-  --border-radius-md: 0.375rem;
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
+#### OKLCH Color Benefits
+```yaml
+oklch_advantages:
+  perceptual_uniformity: Consistent brightness and vibrancy changes
+  wider_gamut: Better color reproduction on modern displays
+  accessibility: More predictable contrast ratios
+  future_proof: Built for modern CSS and display technology
 ```
 
 ## Design System Workflows
