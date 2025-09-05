@@ -5,8 +5,9 @@
 
 ## Application Framework
 
-- **Framework:** Next.js 15 (web dashboard) + React Native with Expo (mobile app)
+- **Framework:** Next.js 15 (web dashboard) + React Native with Expo (mobile app) in monorepo structure
 - **Version:** Next.js 15, React Native with Expo
+- **Architecture:** Monorepo with shared packages for UI components, utilities, and types
 
 ## Database
 
@@ -65,10 +66,25 @@
 
 ## Architecture Overview
 
+### Monorepo Structure
+```
+project-root/
+├── apps/
+│   ├── mobile/          # React Native Expo app
+│   └── web/             # Next.js web dashboard
+├── packages/
+│   ├── shared/          # Shared utilities and business logic
+│   ├── ui/              # Shared UI components and design system
+│   └── types/           # Shared TypeScript types
+└── tools/               # Shared development tools and configs
+```
+
 ### Frontend Applications
-- **Web Dashboard:** Next.js 15 with server-side rendering and static generation
-- **Mobile App:** React Native with Expo for cross-platform compatibility
-- **Shared UI:** Consistent design system using Tailwind CSS and Shadcn UI
+- **Web Dashboard:** Next.js 15 with server-side rendering and static generation (apps/web)
+- **Mobile App:** React Native with Expo for cross-platform compatibility (apps/mobile)
+- **Shared UI:** Consistent design system using Tailwind CSS and Shadcn UI (packages/ui)
+- **Shared Logic:** Common utilities, API clients, and business logic (packages/shared)
+- **Shared Types:** TypeScript type definitions used across all applications (packages/types)
 
 ### Backend Infrastructure
 - **Database:** PostgreSQL managed by Supabase with real-time subscriptions

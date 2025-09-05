@@ -47,21 +47,22 @@ Use the test-runner subagent to run the ALL tests in the application's test suit
 
 </step>
 
-<step number="2" subagent="git-workflow" name="git_workflow">
+<step number="2" name="git_workflow">
 
 ### Step 2: Git Workflow
 
-Use the git-workflow subagent to create git commit, push to GitHub, and create pull request for the implemented features.
+Complete git operations to commit changes, push to GitHub, and create pull request for the implemented features.
 
 <instructions>
-  ACTION: Use git-workflow subagent
-  REQUEST: "Complete git workflow for [SPEC_NAME] feature:
-            - Spec: [SPEC_FOLDER_PATH]
-            - Changes: All modified files
-            - Target: main branch
-            - Description: [SUMMARY_OF_IMPLEMENTED_FEATURES]"
-  WAIT: For workflow completion
-  PROCESS: Save PR URL for summary
+  ACTION: Use Bash tool for git operations
+  PROCESS:
+    1. Check git status to review all changes
+    2. Add all modified files to staging
+    3. Create commit with descriptive message following conventional commits
+    4. Push feature branch to origin
+    5. Create pull request using GitHub CLI (gh)
+  VALIDATE: PR created successfully with proper description
+  SAVE: PR URL for task summary
 </instructions>
 
 <commit_process>

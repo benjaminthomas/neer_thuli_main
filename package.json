@@ -1,0 +1,36 @@
+{
+  "name": "neer-thuli-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monorepo for Neer Thuli - React Native Expo app and Next.js web dashboard",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tools/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:mobile\"",
+    "dev:web": "cd apps/web && npm run dev",
+    "dev:mobile": "cd apps/mobile && npm start",
+    "build": "npm run build:packages && npm run build:apps",
+    "build:packages": "npm run build --workspaces --if-present",
+    "build:apps": "npm run build:web && npm run build:mobile",
+    "build:web": "cd apps/web && npm run build",
+    "build:mobile": "cd apps/mobile && npx expo export",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:e2e": "playwright test",
+    "clean": "npm run clean --workspaces --if-present && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "@playwright/mcp": "latest",
+    "@playwright/test": "^1.40.0",
+    "concurrently": "^8.2.0",
+    "shadcn": "^3.2.1",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

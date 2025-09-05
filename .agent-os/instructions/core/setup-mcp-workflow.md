@@ -10,7 +10,9 @@ encoding: UTF-8
 
 ## Overview
 
-Configure Model Context Protocol (MCP) servers for enhanced Agent OS capabilities and tool integration.
+Document recommended Model Context Protocol (MCP) servers for enhanced Agent OS capabilities and tool integration. 
+
+**IMPORTANT**: This workflow creates documentation and guidelines for MCP servers. Actual MCP server configuration in Claude Code is done through Claude Code's settings interface, not through project files.
 
 <pre_flight_check>
   EXECUTE: @.agent-os/instructions/meta/pre-flight.md
@@ -76,29 +78,36 @@ Use the file-creator subagent to create MCP server configuration files based on 
 <mcp_servers_json_template>
 {
   "mcpServers": {
-    "postgres": {
-      "command": "mcp-server-postgres",
-      "args": ["--connection-string", "${DATABASE_URL}"],
+    "supabase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--read-only",
+        "--project-ref=${SUPABASE_PROJECT_REF}"
+      ],
       "enabled": true
     },
-    "filesystem": {
-      "command": "mcp-server-filesystem", 
-      "args": ["--allowed-dirs", "/project", "/tmp"],
+    "shadcn": {
+      "command": "npx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ],
       "enabled": true
     },
-    "git": {
-      "command": "mcp-server-git",
-      "args": ["--repository", "."],
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@modelcontextprotocol/server-playwright"
+      ],
       "enabled": true
     },
-    "fetch": {
-      "command": "mcp-server-fetch",
-      "args": ["--timeout", "30"],
-      "enabled": false
-    },
-    "sqlite": {
-      "command": "mcp-server-sqlite",
-      "args": ["--db-path", "./tmp/development.sqlite3"],
+    "context7": {
+      "command": "npx",
+      "args": [
+        "context7-mcp@latest"
+      ],
       "enabled": true
     }
   }
@@ -116,28 +125,54 @@ Use the file-creator subagent to create project-specific MCP usage guidelines.
 <usage_guidelines_template>
 # MCP Server Usage Guidelines
 
+## Important Note
+
+This file documents **recommended** MCP servers for the project. Actual MCP server configuration is done in Claude Code's settings, not in this project.
+
 ## Project-Specific MCP Integration
 
-### Enabled MCP Servers
+### Recommended MCP Servers
 
-[LIST_OF_ENABLED_SERVERS_WITH_USE_CASES]
+#### Supabase MCP Server
+- **Purpose**: Database operations, migrations, and API management
+- **Use Cases**: Schema management, data operations, authentication setup
+- **Configuration**: Requires SUPABASE_PROJECT_REF environment variable
+
+#### ShadCN MCP Server  
+- **Purpose**: Component library management and UI development
+- **Use Cases**: Adding components, viewing examples, design system integration
+- **Configuration**: Works with existing components.json configuration
+
+#### Playwright MCP Server
+- **Purpose**: UI testing, visual validation, and accessibility audits
+- **Use Cases**: Cross-browser testing, screenshot comparisons, user flow validation
+- **Configuration**: Automated browser testing capabilities
+
+#### Context7 MCP Server
+- **Purpose**: Library documentation and code examples
+- **Use Cases**: Getting up-to-date documentation, finding code patterns
+- **Configuration**: Access to comprehensive library documentation
 
 ### Usage Patterns
 
-#### Database Operations (mcp-server-postgres)
-- Migration management: Use for complex schema changes
+#### Database Operations (Supabase MCP)
+- Migration management: Use for complex schema changes and database setup
 - Data analysis: Use for reporting and analytics queries
-- Bulk operations: Use for large data imports/exports
+- Authentication setup: Use for configuring auth policies and RLS
+- Real-time subscriptions: Use for managing real-time data flows
 
-#### File Operations (mcp-server-filesystem) 
-- Template management: Use for generating multiple files
-- Asset organization: Use for bulk asset processing
-- Project scaffolding: Use for creating directory structures
+#### UI Component Operations (ShadCN MCP)
+- Component integration: Use for adding and configuring UI components
+- Design system consistency: Use for maintaining component standards
+- Example implementations: Use for finding usage patterns and demos
+- Accessibility compliance: Use for ensuring WCAG compliance
 
-#### Git Operations (mcp-server-git)
-- Repository analysis: Use for commit history and statistics
-- Branch management: Use for complex branching workflows
-- Code review: Use for analyzing changes across branches
+#### UI Testing Operations (Playwright MCP)
+- Visual regression testing: Use for screenshot comparisons and layout validation
+- Cross-browser compatibility: Use for testing across different browsers and devices
+- User flow validation: Use for testing complete user workflows
+- Accessibility audits: Use for WCAG compliance testing
+- Performance testing: Use for measuring UI performance under load
 
 ### When to Use Standard Tools vs MCP Servers
 

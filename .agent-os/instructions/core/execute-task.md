@@ -93,11 +93,11 @@ Use the context-fetcher subagent to retrieve relevant sections from Agent OS sta
             - Feature type: [CURRENT_FEATURE_TYPE]
             - Testing approaches needed
             - Code organization patterns
-            - Applicable specialized MCP servers (Context7, Supabase, Playwright, Shadcn)
+            - Applicable MCP servers: Context7 (docs), Supabase (database), Playwright (UI testing), Shadcn (components)
             - Required design system components"
   PROCESS: Returned standards information
-  PRIORITIZE: Context7 for documentation, specialized MCPs for domain tasks
-  APPLY: Relevant patterns, MCP servers, and design components
+  PRIORITIZE: Use Context7 for documentation lookup, Supabase for database operations, Playwright for UI testing, Shadcn for component management
+  APPLY: Relevant patterns, appropriate MCP servers for specific tasks, and design components
 </instructions>
 
 </step>

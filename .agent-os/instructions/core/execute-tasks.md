@@ -72,19 +72,20 @@ Use the context-fetcher subagent to gather minimal context for task understandin
 
 </step>
 
-<step number="3" subagent="git-workflow" name="git_branch_management">
+<step number="3" name="git_branch_management">
 
 ### Step 3: Git Branch Management
 
-Use the git-workflow subagent to manage git branches to ensure proper isolation by creating or switching to the appropriate branch for the spec.
+Manage git branches to ensure proper isolation by creating or switching to the appropriate branch for the spec.
 
 <instructions>
-  ACTION: Use git-workflow subagent
-  REQUEST: "Check and manage branch for spec: [SPEC_FOLDER]
-            - Create branch if needed
-            - Switch to correct branch
-            - Handle any uncommitted changes"
-  WAIT: For branch setup completion
+  ACTION: Use Bash tool for git operations
+  PROCESS: 
+    1. Check current branch status with `git status`
+    2. Create feature branch from spec folder name (excluding date prefix)
+    3. Switch to the feature branch
+    4. Handle any uncommitted changes if needed
+  VALIDATE: Working on correct branch for the feature
 </instructions>
 
 <branch_naming>

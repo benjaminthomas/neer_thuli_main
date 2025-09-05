@@ -10,7 +10,9 @@ encoding: UTF-8
 
 ## Overview
 
-Use Playwright MCP server for comprehensive UI testing, visual validation, and accessibility audits in water infrastructure monitoring system.
+Use Playwright MCP server for comprehensive UI testing, visual validation, and accessibility audits in water infrastructure monitoring system. 
+
+**IMPORTANT**: Playwright MCP is used for UI testing and validation, not test-driven development. This tool provides browser automation capabilities for visual regression testing, accessibility audits, and user flow validation.
 
 <pre_flight_check>
   EXECUTE: @.agent-os/instructions/meta/pre-flight.md
@@ -38,8 +40,10 @@ Ensure development servers are running before UI validation.
 </server_requirements>
 
 <validation_command>
-  playwright-mcp: "Check development server status at http://localhost:3000"
-  playwright-mcp: "Verify mobile app preview at http://localhost:8081"
+  mcp__playwright__browser_navigate: "http://localhost:3000"
+  mcp__playwright__browser_snapshot: "Capture dashboard accessibility tree"
+  mcp__playwright__browser_navigate: "http://localhost:8081"
+  mcp__playwright__browser_snapshot: "Capture mobile app preview accessibility tree"
 </validation_command>
 
 </step>
@@ -64,10 +68,14 @@ Test water infrastructure UI across different device viewports.
 </viewport_testing>
 
 <testing_commands>
-  playwright-mcp: "Screenshot comparison for mobile navigation menu"
-  playwright-mcp: "Test responsive map interface on tablet viewport"
-  playwright-mcp: "Validate desktop dashboard layout with sidebar"
-  playwright-mcp: "Test form inputs on mobile viewport for field data entry"
+  mcp__playwright__browser_resize: "393x852" # iPhone 14 Pro
+  mcp__playwright__browser_take_screenshot: "mobile-navigation-menu.png"
+  mcp__playwright__browser_resize: "768x1024" # iPad Mini  
+  mcp__playwright__browser_take_screenshot: "tablet-map-interface.png"
+  mcp__playwright__browser_resize: "1920x1080" # Desktop
+  mcp__playwright__browser_take_screenshot: "desktop-dashboard-layout.png"
+  mcp__playwright__browser_resize: "360x800" # Mobile form testing
+  mcp__playwright__browser_take_screenshot: "mobile-form-inputs.png"
 </testing_commands>
 
 </step>
@@ -100,11 +108,11 @@ Test UI components specific to water infrastructure monitoring.
 </infrastructure_components>
 
 <validation_scenarios>
-  playwright-mcp: "Test KML file upload and map visualization"
-  playwright-mcp: "Validate infrastructure component data entry forms"
-  playwright-mcp: "Screenshot progress dashboard with sample data"
-  playwright-mcp: "Test photo upload functionality with validation"
-  playwright-mcp: "Validate color-coded map markers for completion status"
+  mcp__playwright__browser_file_upload: "Test KML file upload functionality"
+  mcp__playwright__browser_fill_form: "Validate infrastructure component data entry"
+  mcp__playwright__browser_take_screenshot: "progress-dashboard-sample-data.png"
+  mcp__playwright__browser_file_upload: "Test photo upload with validation"
+  mcp__playwright__browser_take_screenshot: "color-coded-map-markers.png"
 </validation_scenarios>
 
 </step>
@@ -131,11 +139,11 @@ Ensure WCAG 2.1 AA compliance for field staff, supervisors, and administrators.
 </accessibility_requirements>
 
 <audit_commands>
-  playwright-mcp: "Run accessibility audit on main dashboard"
-  playwright-mcp: "Test keyboard navigation through data entry forms"
-  playwright-mcp: "Validate screen reader support for progress charts"
-  playwright-mcp: "Check color contrast for map markers and indicators"
-  playwright-mcp: "Test focus management in photo upload modals"
+  mcp__playwright__browser_snapshot: "Accessibility audit for main dashboard"
+  mcp__playwright__browser_press_key: "Tab" # Test keyboard navigation
+  mcp__playwright__browser_evaluate: "Check ARIA labels and roles for charts"
+  mcp__playwright__browser_evaluate: "Validate color contrast ratios"
+  mcp__playwright__browser_click: "photo-upload-button" # Test focus management
 </audit_commands>
 
 </step>
@@ -175,10 +183,10 @@ Test complete user workflows for water infrastructure monitoring.
 </critical_flows>
 
 <flow_testing_commands>
-  playwright-mcp: "Test complete field staff data entry workflow"
-  playwright-mcp: "Validate supervisor approval workflow with photo review"
-  playwright-mcp: "Test manager dashboard with multi-project navigation"
-  playwright-mcp: "Validate real-time data synchronization from mobile to web"
+  mcp__playwright__browser_fill_form: "Complete field staff login and data entry"
+  mcp__playwright__browser_click: "approval-button" # Supervisor workflow
+  mcp__playwright__browser_navigate: "multi-project dashboard" # Manager workflow
+  mcp__playwright__browser_wait_for: "real-time data update indicators"
 </flow_testing_commands>
 
 </step>
@@ -205,10 +213,11 @@ Compare current UI state with approved designs for consistency.
 </visual_comparison_areas>
 
 <regression_commands>
-  playwright-mcp: "Screenshot comparison for all button states"
-  playwright-mcp: "Compare form validation error displays"
-  playwright-mcp: "Validate loading spinner consistency across pages"
-  playwright-mcp: "Screenshot infrastructure progress cards layout"
+  mcp__playwright__browser_hover: "button-element" # Test hover states
+  mcp__playwright__browser_take_screenshot: "button-states-comparison.png"
+  mcp__playwright__browser_take_screenshot: "form-validation-errors.png"
+  mcp__playwright__browser_take_screenshot: "loading-spinner-states.png"
+  mcp__playwright__browser_take_screenshot: "progress-cards-layout.png"
 </regression_commands>
 
 </step>
@@ -235,10 +244,10 @@ Test UI performance with water infrastructure data loads.
 </performance_scenarios>
 
 <performance_commands>
-  playwright-mcp: "Test page load performance with large datasets"
-  playwright-mcp: "Validate map rendering performance with multiple KML files"
-  playwright-mcp: "Test real-time updates performance with simulated slow network"
-  playwright-mcp: "Validate offline mode functionality and data sync"
+  mcp__playwright__browser_evaluate: "Measure page load performance metrics"
+  mcp__playwright__browser_evaluate: "Test map rendering with performance timing"
+  mcp__playwright__browser_evaluate: "Simulate slow network conditions"
+  mcp__playwright__browser_evaluate: "Test offline mode and sync functionality"
 </performance_commands>
 
 </step>
@@ -264,10 +273,10 @@ Ensure compatibility across browsers used by different user types.
 </browser_matrix>
 
 <cross_browser_commands>
-  playwright-mcp: "Test water infrastructure dashboard in Chrome and Firefox"
-  playwright-mcp: "Validate mobile app functionality across mobile browsers"
-  playwright-mcp: "Test KML file upload in Safari and Edge browsers"
-  playwright-mcp: "Compare form rendering across all supported browsers"
+  mcp__playwright__browser_take_screenshot: "dashboard-chrome.png"
+  mcp__playwright__browser_take_screenshot: "dashboard-firefox.png"
+  mcp__playwright__browser_take_screenshot: "mobile-app-safari.png"
+  mcp__playwright__browser_take_screenshot: "form-rendering-comparison.png"
 </cross_browser_commands>
 
 </step>

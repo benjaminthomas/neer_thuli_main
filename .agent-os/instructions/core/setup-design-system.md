@@ -128,12 +128,18 @@ Use the file-creator subagent to create comprehensive component usage guidelines
 
 ## Framework Integration
 
-### [FRAMEWORK_NAME] Components
+### Monorepo Multi-Platform Components
 
-#### Primary Component Library
-- **Library:** [COMPONENT_LIBRARY_NAME]
-- **Installation:** [INSTALLATION_COMMAND]
-- **Configuration:** [CONFIG_FILE_REFERENCE]
+#### Cross-Platform Component Strategy
+- **Web Library:** Shadcn UI with Tailwind CSS (Next.js)
+- **Mobile Library:** NativeWind + React Native components (Expo)
+- **Shared Package:** @project/ui for common component logic
+- **Installation:** Use Shadcn MCP server for component management and examples
+
+#### Primary Component Libraries
+- **Web (Next.js):** Shadcn UI + Tailwind CSS
+- **Mobile (Expo):** React Native + NativeWind
+- **Shared:** @project/ui workspace package
 
 #### Required Components
 - **Button:** Primary, secondary, outline, ghost variants
@@ -282,24 +288,26 @@ Use the file-creator subagent to create project-specific accessibility requireme
 Configure the chosen framework's design system integration based on the project's tech stack.
 
 <framework_integrations>
-  <react_typescript>
-    - Setup Shadcn/ui with Tailwind CSS
-    - Configure design tokens in tailwind.config.js
-    - Setup component prop interfaces
-    - Configure Storybook for documentation
-  </react_typescript>
-  <react_native>
-    - Setup NativeBase or React Native Elements
-    - Configure theme provider
+  <monorepo_setup>
+    - Setup shared @project/ui package with cross-platform components
+    - Configure Shadcn/ui with Tailwind CSS for Next.js web app
+    - Setup NativeWind for React Native Expo mobile app
+    - Configure shared design tokens across platforms
+    - Setup platform-specific component adaptations
+    - Configure Storybook for cross-platform documentation
+  </monorepo_setup>
+  <web_nextjs>
+    - Setup Shadcn/ui components in apps/web
+    - Configure Tailwind CSS with shared design tokens
+    - Import shared components from @project/ui
+    - Setup responsive utilities for web
+  </web_nextjs>
+  <mobile_expo>
+    - Setup NativeWind for styling consistency
+    - Configure React Native components with shared theme
+    - Import shared logic from @project/ui
     - Setup platform-specific adaptations
-    - Configure responsive utilities
-  </react_native>
-  <ruby_rails>
-    - Setup ViewComponent with Tailwind CSS
-    - Configure SCSS variables
-    - Setup Stimulus JavaScript behaviors
-    - Configure component testing
-  </ruby_rails>
+  </mobile_expo>
 </framework_integrations>
 
 <instructions>
@@ -319,19 +327,19 @@ Configure testing infrastructure for design system components and accessibility 
 
 <testing_configuration>
   <visual_regression>
-    - Screenshot comparison testing
-    - Cross-browser validation
-    - Component state testing
+    - Use Playwright MCP server for screenshot comparison testing
+    - Cross-browser validation with automated testing
+    - Component state testing across different viewports
   </visual_regression>
   <accessibility_testing>
-    - Automated axe-core integration
-    - Keyboard navigation testing
-    - Screen reader compatibility
+    - Use Playwright MCP server for accessibility audits
+    - Automated keyboard navigation testing
+    - Screen reader compatibility validation
   </accessibility_testing>
   <performance_testing>
-    - Bundle size monitoring
-    - Runtime performance validation
-    - Loading performance testing
+    - Bundle size monitoring with performance metrics
+    - Runtime performance validation using Playwright
+    - Loading performance testing across devices
   </performance_testing>
 </testing_configuration>
 
